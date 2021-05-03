@@ -26,12 +26,19 @@ namespace Question1
 
         static void Main(string[] args)
         {
-            Console.Write("Enter X number: ");
-
+            Console.Write("Enter X1 number: ");
             int x = NumberChecker();
-            Console.Write("Enter Y number: ");
+
+            Console.Write("Enter Y1 number: ");
             int y = NumberChecker();
-            Point point = new Point(x, y);
+
+            Console.Write("Enter X2 number: ");
+            int x2 = NumberChecker();
+
+            Console.Write("Enter Y2 number: ");
+            int y2 = NumberChecker();
+
+            Point point = new Point(x, y, x2, y2);
             Console.Write("Enter scalar: ");
 
             int a = NumberChecker();
@@ -44,38 +51,61 @@ namespace Question1
 
     class Point
     {
-        private int x;
-        private int y;
+        private int x1;
+        private int y1;
+        private int x2;
+        private int y2;
         private int scalar;
         private double b;
         private double c;
+        private double d;
+        private double e;
 
 
-        public int X
+        public int X1
         {
-            get { return x; }
-            set { x = value; }
+            get { return x1; }
+            set { x1 = value; }
         }
 
-        public int Y
+        public int Y1
         {
-            get { return y; }
-            set { y = value; }
+            get { return y1; }
+            set { y1 = value; }
         }
 
-        public Point(int x, int y)
+        public int X2
         {
-            this.x = x;
-            this.y = y;
+            get { return x2; }
+            set { x2 = value; }
+        }
+
+        public int Y2
+        {
+            get { return y2; }
+            set { y2 = value; }
+        }
+
+        public Point(int x1, int y1, int x2, int y2)
+        {
+            this.x1 = x1;
+            this.y1 = y1;
+            this.x2 = x2;
+            this.y2 = y2;
         }
 
         public Point(){}
 
         public void Metod()
         {
-            double lenght = x * x + y * y;
+            double lenght = x1 * x1 + y1 * y1;
+            double lenght1 = x2 * x2 + y2 * y2;
+
             lenght = Math.Sqrt(lenght);
-            Console.WriteLine($"Vector lenght = { lenght }");
+            lenght1 = Math.Sqrt(lenght1);
+
+            Console.WriteLine($"Vector for (x1, y1)lenght = { lenght }");
+            Console.WriteLine($"Vector for (x2, y2)lenght = { lenght1 }");
         }
 
         public int ScalarForXY
@@ -83,16 +113,18 @@ namespace Question1
             set
             {
                 scalar = value;
-                b = value * x;
-                c = value * y;
+                b = value * x1;
+                c = value * y1;
+                d = value * x2;
+                e = value * y2;
             }
         }
 
         public void Display ()
         {
-            Console.WriteLine($"X = { x }, Y = { y }");
+            Console.WriteLine($"X1 = { x1 }, Y1 = { y1 }, X2 = { x2 }, Y2 = { y2 }");
             Metod();
-            Console.WriteLine($"Scalar ({ b }, { c })");
+            Console.WriteLine($"Scalar ({ b }, { c }, { d }, { e })");
         }
     }
 }
