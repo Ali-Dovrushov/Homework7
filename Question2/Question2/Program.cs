@@ -55,11 +55,6 @@ namespace Question2
             this.a = a;
             this.b = b;
             this.c = c;
-
-            if (a + b < c && b + c < a && a + c < b)
-            {
-                Console.WriteLine("Trinagle with this sides can't possible");
-            }
         }
 
         public Triangle()
@@ -85,21 +80,6 @@ namespace Question2
             set { c = value; }
         }
 
-        //public string TriangleChecker
-        //{
-        //    get
-        //    {
-        //        return "Trinagle with this sides can't possible";
-        //    }
-        //    private set
-        //    {
-        //        if (a + b < c && b + c < a && a + c < b)
-        //        {
-        //            string a = value;
-        //        }
-        //    }
-        //}
-
         public void CalcPerimeter()
         {
             int perimetr = a + b + c;
@@ -110,9 +90,14 @@ namespace Question2
         {
             double p = (a + b + c) / 2;
             double area = p * (p - a) * (p - b) * (p - c);
-            area = Math.Sqrt(area);
-            int test = Convert.ToInt32(area);
-            Console.WriteLine($"Area = { test }");
+            if (area <= 0)
+            {
+                Console.WriteLine("Trinagle with this sides can't possible");
+            }
+            else
+            {
+                Console.WriteLine($"Area = { area }");
+            }
         }
 
         public void Display()
