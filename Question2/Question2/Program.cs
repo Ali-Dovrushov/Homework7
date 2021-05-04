@@ -27,18 +27,20 @@ namespace Question2
 
         static void Main(string[] args)
         {
-            Triangle triangle = new Triangle();
 
             Console.Write("Enter A = ");
-            triangle.A = NumberChecker();
+            int a = NumberChecker();
 
             Console.Write("Enter B = ");
-            triangle.B = NumberChecker();
+            int b = NumberChecker();
 
             Console.Write("Enter C = ");
-            triangle.C = NumberChecker();
+            int c = NumberChecker();
+
+            Triangle triangle = new Triangle(a,b,c);
 
             triangle.Display();
+
             Console.ReadKey();
         }
     }
@@ -48,18 +50,23 @@ namespace Question2
         private int a;
         private int b;
         private int c;
-        
+        private bool triangleChecker;
 
         public Triangle(int a, int b, int c)
         {
             this.a = a;
             this.b = b;
             this.c = c;
-        }
 
-        public Triangle()
-        {
-
+            if ((a + b) > c && (a + c) > b && (b + c) > a)
+            {
+                triangleChecker = true;
+                Console.WriteLine("srabotal");
+            }
+            else
+            {
+                triangleChecker = false;
+            }
         }
 
         public int A
@@ -80,6 +87,14 @@ namespace Question2
             set { c = value; }
         }
 
+        public bool TriangleChecker
+        {
+            get
+            {
+                return triangleChecker;
+            }
+        }
+
         public void CalcPerimeter()
         {
             int perimetr = a + b + c;
@@ -88,12 +103,16 @@ namespace Question2
 
         public void CalcArea()
         {
-            double p = (a + b + c) / 2;
-            double area = p * (p - a) * (p - b) * (p - c);
-            if (area <= 0)
+            double p = (double)(a + b + c) / 2;
+            Console.WriteLine(p);
+
+            double area = (double)Math.Sqrt(p * (p - a) * (p - b) * (p - c));
+
+            if (triangleChecker == true)
             {
-                Console.WriteLine("Trinagle with this sides can't possible");
+                Console.WriteLine("Triangle with this sides cannot be.");
             }
+
             else
             {
                 Console.WriteLine($"Area = { area }");
