@@ -65,6 +65,7 @@ namespace Question3
                 }
                 return false;
             }
+            private set { }
         }
 
         public Rectangle(int a, int b)
