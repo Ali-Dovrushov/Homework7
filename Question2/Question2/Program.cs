@@ -50,23 +50,12 @@ namespace Question2
         private int a;
         private int b;
         private int c;
-        private bool triangleChecker;
 
         public Triangle(int a, int b, int c)
         {
             this.a = a;
             this.b = b;
             this.c = c;
-
-            if ((a + b) > c && (a + c) > b && (b + c) > a)
-            {
-                triangleChecker = true;
-                Console.WriteLine("srabotal");
-            }
-            else
-            {
-                triangleChecker = false;
-            }
         }
 
         public int A
@@ -91,30 +80,33 @@ namespace Question2
         {
             get
             {
-                return triangleChecker;
+                if (a + b > c && a + c > b && b + c > a)
+                {
+                    return true;
+                }
+                return false;
             }
         }
 
         public void CalcPerimeter()
         {
-            int perimetr = a + b + c;
-            Console.WriteLine($"\nPerimeter = { perimetr }");
+            if (TriangleChecker == true)
+            {
+                int perimetr = a + b + c;
+                Console.WriteLine($"\nPerimeter = { perimetr }");
+            }
+            else
+            {
+                Console.WriteLine("\nTriangle with this side cannot be.");
+            }
         }
 
         public void CalcArea()
         {
-            double p = (double)(a + b + c) / 2;
-            Console.WriteLine(p);
-
-            double area = (double)Math.Sqrt(p * (p - a) * (p - b) * (p - c));
-
-            if (triangleChecker == true)
+            if (TriangleChecker == true)
             {
-                Console.WriteLine("Triangle with this sides cannot be.");
-            }
-
-            else
-            {
+                double p = (double)(a + b + c) / 2;
+                double area = (double)Math.Sqrt(p * (p - a) * (p - b) * (p - c));
                 Console.WriteLine($"Area = { area }");
             }
         }
